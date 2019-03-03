@@ -9,9 +9,8 @@
 #include <string.h>
 
 #define NUM_REGS 32
-#define SIZE_CACHE 10
 #define SIZE_PROG 100
-#define SIZE_DATA 100
+#define SIZE_MEM 100
 
 /* UNIX terminal colors */
 #define RED   "\x1B[31m"

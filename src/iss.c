@@ -6,11 +6,8 @@ unsigned regs[ NUM_REGS ];
 /* Full assembled program */ 
 unsigned program [ SIZE_PROG ];
 
-/* Full data */ 
-int data [ SIZE_DATA ];
-
 /* Full cache */
-int cache[ SIZE_CACHE ];
+int memory[ SIZE_MEM ];
 
 /* program counter */
 int pc = 0;
@@ -277,11 +274,11 @@ void eval()
 		/* load */ 
 		if(imm==1) {//o is an immediate value
 			if(step)printf( "load r%d #%d" RED " r%d\n" RESET, regAlpha, o, regBeta );
-			regs[ regBeta ] = cache[ regs[ regAlpha ] + o ];
+			regs[ regBeta ] = memory[ regs[ regAlpha ] + o ];
 		}
 		else if(imm==0){//o is a register
 			if(step)printf( "load r%d r%d" RED " r%d\n" RESET, regAlpha, regInter, regBeta );
-			regs[ regBeta ] = cache[ regs[ regAlpha ] + regs[ regInter ] ];
+			regs[ regBeta ] = memory[ regs[ regAlpha ] + regs[ regInter ] ];
 		}
 		bench_count ++;
 		bench_count ++;
@@ -291,11 +288,11 @@ void eval()
 		/* store */ 
 		if(imm==1) {//o is an immediate value
 			if(step)printf( "store " RED "r%d" RESET " #%d r%d\n", regAlpha, o, regBeta );
-			cache[ regs[ regAlpha ] + o ] = regs[ regBeta ];
+			memory[ regs[ regAlpha ] + o ] = regs[ regBeta ];
 		}
 		else if(imm==0){//o is a register
 			if(step)printf( "store r%d r%d r%d\n", regAlpha, regInter, regBeta );
-			cache[ regs[ regAlpha ] + regs[ regInter ] ] = regs[ regBeta ];
+			memory[ regs[ regAlpha ] + regs[ regInter ] ] = regs[ regBeta ];
 		}
 		bench_count ++;
 		bench_count ++;
@@ -371,7 +368,7 @@ void getData(FILE *fp){
 	int i=0;
 	while(fgets(buff,line_size,fp)!=NULL){
 		valInter = (int) strtol(buff, (char **)NULL, 10);
-		data[i] = valInter;
+		memory[i] = valInter;
 		i++;
 	}
 	free(buff);
