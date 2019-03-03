@@ -1,13 +1,16 @@
 default: Mini_MIPS
 
-Mini_MIPS: main.o iss.o 
-	gcc main.o iss.o -o Mini_MIPS -Wall -Wextra -pedantic -lPython
+Mini_MIPS: objs/main.o objs/iss.o 
+	gcc objs/main.o objs/iss.o -o Mini_MIPS -Wall -Wextra -pedantic -lPython
+	mv Mini_MIPS bin/Mini_MIPS
 
-main.o: src/main.c src/shared.h
+objs/main.o: src/main.c src/shared.h
 	gcc -c src/main.c -Wall -Wextra -pedantic 
+	mv main.o objs/main.o
 
-iss.o: src/iss.c src/iss.h src/shared.h
+objs/iss.o: src/iss.c src/iss.h src/shared.h
 	gcc -c src/iss.c -Wall -Wextra -pedantic 
+	mv iss.o objs/iss.o
 
 clean:
 	rm -rf *.o Mini_MIPS
