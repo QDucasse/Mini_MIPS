@@ -5,7 +5,7 @@
 #include <python2.7/Python.h>
 
 /* step mode */
-int step = 0;
+int step = 1;
 
 struct globalArgs_t {
 	FILE *hexFileToRun;			/* -r option */
