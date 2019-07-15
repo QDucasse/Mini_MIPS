@@ -27,11 +27,11 @@ with for example:
 ./bin/Mini_MIPS --run    test_file.hex   #launches the simulation of the .hex file
 ./bin/Mini_MIPS --encode test_file.asm   #launches asm file encoding
 ./bin/Mini_MIPS --decode test_file.hex   #launches asm file decoding
-./bin/Mini_MIPS --step 				     #triggers step mode   ***
+./bin/Mini_MIPS --step 				           #triggers step mode   ***
 ./bin/Mini_MIPS --load   test_file.data  #loads data in memory ***
 ```
 
-Commands marked with *** are not fully functional
+*Commands marked with *** are not fully functional*
 
 *The file `./tests/encode_test_results/test_syracuse_result.hex` is the go-to test file*
 
@@ -54,7 +54,7 @@ Note that the step mode is enabled by default and should be changed manually by 
 - Pile creation with hexadecimal instructions
 - ISS instructions execution
 - Solid command line handling
-- Step by step execution with terminal-based GUI (Should be triggered manually by giving step in src/main.c the value 1)
+- Step by step execution with terminal-based GUI *(Should be triggered manually by giving step in src/main.c the value 1)*
 
 ### GUI
 - Step mode with colors for the last used registory (for binary commands)
